@@ -39,7 +39,13 @@ const NuevoContactoForm = () => {
           id='nombre'
           value={formValues.nombre}
           onChange={handleChangeFormValue}/>
-        <label htmlFor=""></label>
+        <label htmlFor="numero">Número: </label>
+        <input type={formEsquema.info.numero}
+        name='numero'
+        id='numero'
+        value={formValues.info.numero}
+        onChange={handleChangeFormValue}/>
+
       </form>
     </div>
   )
