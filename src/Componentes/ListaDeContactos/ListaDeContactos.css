@@ -1,0 +1,25 @@
+.contactos-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 8px;
+  max-width: 420px;
+  .contacto-item {
+    border: 1px solid white;
+    border-radius: 3px;
+    padding: 8px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    &:hover{
+    background-color: #233138;
+  }
+    &:active{
+      background-color: #017c62;
+    }
+    .titulo {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+  }
+}
