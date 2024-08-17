@@ -1,8 +1,9 @@
 .contactos-list {
   display: flex;
   flex-direction: column;
-  margin-top: 8px;
+  margin-top: 20px;
   max-width: 420px;
+  margin: auto;
   .contacto-item {
     border: 1px solid white;
     border-radius: 3px;

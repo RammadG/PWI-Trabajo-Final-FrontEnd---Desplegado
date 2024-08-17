@@ -9,7 +9,7 @@ function App() {
       <Route path='/' element={<Contactos/>} />
       <Route path='/chats/:id' element={<Chats />} />
       <Route path='/agregar-contacto' element={<AgregarContacto />} />
-      <Route path='/info-contacto' element={<InfoDeContacto />} />
+      <Route path='/info-contacto/:id' element={<InfoDeContacto />} />
     </Routes>
   );
 }

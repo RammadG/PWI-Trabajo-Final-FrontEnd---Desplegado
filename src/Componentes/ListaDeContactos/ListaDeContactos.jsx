@@ -11,7 +11,6 @@ const ListaDeContactos = ({data}) => {
   return (
     <div className="contactos-list">
       {data.map((contacto) => {
-        
         const ultimoMensaje = contacto.mensajes[contacto.mensajes.length - 1];
         return (
           <div onClick={handleGetInContact(contacto.id)} key={contacto.id} className="contacto-item">

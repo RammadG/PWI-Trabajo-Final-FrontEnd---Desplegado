@@ -6,7 +6,11 @@ const NuevoContactoForm = () => {
   const formEsquema = {
     nombre: '',
     id: Number(),
-    info: '',
+    info:{
+      numero: '',
+      descripcion: 'HEY There!, I am using WhatsApp...',
+      fechadescripcion:'',
+      },
     mensajes: [
       {
         author: '',

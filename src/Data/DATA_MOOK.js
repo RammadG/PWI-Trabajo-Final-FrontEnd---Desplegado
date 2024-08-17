@@ -3,7 +3,11 @@
     nombre: 'Han Solo',
     id: 1,
     conexion: 'ult. vez ayer 17:00',
-    info: '',
+    info: {
+      numero: '',
+      descripcion: '',
+      fechadescripcion:'',
+    },
     mensajes: [
       {
         author: 'otro',
@@ -52,7 +56,11 @@
     nombre: 'Chewbacca',
     id: 2,
     conexion: 'ult. vez ayer 13:00',
-    info: '',
+    info: {
+      numero:'+54 9 11 5815-3048',
+      descripcion: 'HEY There!, I am using WhatsApp...',
+      fechadescripcion:'15 de febrero de 2022',
+    },
     mensajes: [ 
       {
         author: 'yo',
@@ -114,7 +122,11 @@
     nombre: 'Maestro Yoda',
     id: 3,
     conexion: 'ult. vez hace 40 min',
-    info: '',
+    info: {
+      numero:'',
+      descripcion:'',
+      fechadescripcion:'',
+    },
     mensajes: [
       {
         author: 'otro',
@@ -157,7 +169,11 @@
     nombre: 'Dark Vadder',
     id: 4,
     conexion: 'OnLine',
-    info: '',
+    info: {
+      numero:'',
+      descripcion:'',
+      fechadescripcion:'',
+    },
     mensajes: [ 
       {
         author: 'otro',

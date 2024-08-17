@@ -4,12 +4,13 @@
   align-items: center; 
   height: 100vh;
   box-sizing: border-box;
-  background-color: #121212; 
+  background-color: #121212;
+  max-width: 600px; 
+  margin: auto;
 }
 
 .chat-header {
   width: 100%;
-  max-width: 600px; 
   display: flex;
   align-items: center;
   padding: 10px 20px; 
@@ -31,15 +32,6 @@
   margin-right: 10px;
 }
 
-.contact-details h3 {
-  margin: 0;
-  font-size: 1.2rem;
-}
-
-.contact-details span {
-  font-size: 0.9rem;
-  color: #b3b3b3; 
-}
 
 .chat-display {
   width: 100%;
@@ -51,4 +43,9 @@
   overflow-y: auto;
   display: flex;
   flex-direction: column;
+}
+
+.input-mensaje{
+  width: 100%;
+  padding: 6px 8px;
 }
