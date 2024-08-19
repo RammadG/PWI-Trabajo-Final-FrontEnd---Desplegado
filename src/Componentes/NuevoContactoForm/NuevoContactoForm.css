@@ -1,0 +1,92 @@
+.nuevo-contacto-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+/* Estilo general para el formulario */
+.nuevo-contacto-form {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #121212;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  margin: 20px;
+  width: 100%;
+  max-width: 600px;
+}
+
+/* Estilo para las etiquetas */
+.form-label {
+  color: #b0b0b0;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+/* Estilo para los campos de entrada */
+.form-input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #4f4f4f;
+  border-radius: 5px;
+  background-color: #1e1e1e;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+/* Estilo para el contenedor de botones */
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 300px;
+  margin-top: 10px;
+}
+
+/* Estilo para los botones */
+.form-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  color: #fff;
+}
+
+/* Botón Agregar */
+.agregar-button {
+  background-color: #25d366;
+}
+
+.agregar-button:hover {
+  background-color: #20c257;
+}
+
+/* Botón Cancelar */
+.cancelar-button {
+  background-color: #555;
+}
+
+.cancelar-button:hover {
+  background-color: #444;
+}
+
+/* Media queries para hacer el formulario responsivo */
+@media (max-width: 768px) {
+  .nuevo-contacto-form {
+    max-width: 100%;
+    padding: 15px;
+  }
+
+  .button-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .form-button {
+    margin-bottom: 10px;
+  }
+}

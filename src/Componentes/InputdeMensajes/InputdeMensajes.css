@@ -4,6 +4,7 @@
   margin-top: auto;
 }
 
+/* Estilo del input */
 .input-container input[type="text"] {
   flex: 1;
   padding: 10px 15px;
@@ -16,11 +17,13 @@
   transition: box-shadow 0.3s ease-in-out;
 }
 
+/* Enfoque del input */
 .input-container input[type="text"]:focus {
   outline: none;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
 }
 
+/* Estilo del botón de enviar */
 .input-container .send-button {
   padding: 10px 15px;
   margin-left: 10px;
@@ -33,10 +36,28 @@
   transition: background-color 0.3s ease;
 }
 
+/* Hover del botón de enviar */
 .input-container .send-button:hover {
   background-color: #0f7669;
 }
 
+/* Enfoque del botón de enviar */
 .input-container .send-button:focus {
   outline: none;
+}
+
+/* Media queries para hacer el contenedor responsivo */
+@media (max-width: 768px) {
+  .input-container {
+    flex-direction: column;
+  }
+
+  .input-container input[type="text"] {
+    margin-bottom: 10px;
+  }
+
+  .input-container .send-button {
+    width: 100%;
+    margin-left: 0;
+  }
 }

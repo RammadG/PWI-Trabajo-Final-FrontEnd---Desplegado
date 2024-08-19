@@ -3,10 +3,11 @@
     nombre: 'Han Solo',
     id: 1,
     conexion: 'ult. vez ayer 17:00',
+    imagen: 'https://hips.hearstapps.com/hmg-prod/images/han-solo-1527175935.jpg',
     info: {
-      numero: '',
-      descripcion: '',
-      fechadescripcion:'',
+      numero: '+54 9 11 6802-6359',
+      descripcion: 'Escribeme, si te gusta lo que ves',
+      fechadescripcion:'22 de julio de 2019',
     },
     mensajes: [
       {
@@ -56,6 +57,7 @@
     nombre: 'Chewbacca',
     id: 2,
     conexion: 'ult. vez ayer 13:00',
+    imagen: 'https://imgmedia.larepublica.pe/640x371/larepublica/migration/images/SZU2RXZXWZFGBEH4LFQUVKWGTE.webp',
     info: {
       numero:'+54 9 11 5815-3048',
       descripcion: 'HEY There!, I am using WhatsApp...',
@@ -122,10 +124,11 @@
     nombre: 'Maestro Yoda',
     id: 3,
     conexion: 'ult. vez hace 40 min',
+    imagen: 'https://s1.elespanol.com/2015/12/11/actualidad/actualidad_86001588_298582_1706x1280.jpg',
     info: {
-      numero:'',
-      descripcion:'',
-      fechadescripcion:'',
+      numero:'+54 9 11 3611-8565',
+      descripcion:'para mañana no dejes, lo que hoy hacer puedes',
+      fechadescripcion:'30 de enero de 2024',
     },
     mensajes: [
       {
@@ -169,10 +172,11 @@
     nombre: 'Dark Vadder',
     id: 4,
     conexion: 'OnLine',
+    imagen: '	https://nsabers.es/cdn/shop/articles/bebec223da75d29d8e03027fd2882262.png?v=1708781179',
     info: {
-      numero:'',
-      descripcion:'',
-      fechadescripcion:'',
+      numero:'+54 9 11 5143-8032',
+      descripcion: 'cachorritos del amor',
+      fechadescripcion:'4 de marzo de 2023',
     },
     mensajes: [ 
       {

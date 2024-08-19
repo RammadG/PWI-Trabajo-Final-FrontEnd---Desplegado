@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import './NuevoContactoForm.css'
 
 const NuevoContactoForm = () => {
 
@@ -30,23 +30,26 @@ const NuevoContactoForm = () => {
   }
 
   return (
-    <div>
-      <form>
-        <label htmlFor="nombre">Nombre: </label>
+    <div className="nuevo-contacto-container">
+      <form className="nuevo-contacto-form">
+        <label htmlFor="nombre" className="form-label">Nombre: </label>
         <input 
           type={formEsquema.nombre}
           name='nombre'
           id='nombre'
           value={formValues.nombre}
           onChange={handleChangeFormValue}/>
-        <label htmlFor="numero">Número: </label>
+        <label htmlFor="numero" className="form-label">Número: </label>
         <input type={formEsquema.info.numero}
         name='numero'
         id='numero'
         value={formValues.info.numero}
         onChange={handleChangeFormValue}/>
-
       </form>
+      <div className="button-container">
+        <button className="form-button agregar-button">Agregar</button>
+        <button className="form-button cancelar-button">Cancelar</button>
+      </div>
     </div>
   )
 }

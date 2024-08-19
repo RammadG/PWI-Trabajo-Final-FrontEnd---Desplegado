@@ -10,7 +10,7 @@ const InfoDeContacto = () => {
   return (
     <>
       <div className='profile-container'>
-        <img src="" alt="" />
+      <img src={contactosinfo.imagen} alt={`${contactosinfo.nombre} perfil`} />
         <h2>{contactosinfo.nombre}</h2>
         <h3>{contactosinfo.info.numero}</h3>
       </div>

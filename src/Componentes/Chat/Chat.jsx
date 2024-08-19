@@ -39,7 +39,7 @@ const Chat = () => {
     <div className='chat-container'>
       <header className='chat-header'>
         <div className='contact-info'>
-          <img onClick={handleGetbacktoContacts} src="https://www.gstatic.com/images/icons/material/system/2x/person_outline_black_48dp.png" alt='profile' className='profile-pic'/>
+          <img onClick={handleGetbacktoContacts} src={chat.imagen} alt={`${chat.nombre} perfil`} className='profile-pic'/>
           <div onClick={handleGetInInfoContact(parametros.id)} className='contact-details'>
             <p>{chat.nombre}</p>
             <p>{chat.conexion}</p>

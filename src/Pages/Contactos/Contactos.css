@@ -1,0 +1,95 @@
+.contactos-container {
+  width: 100%;
+  max-width: 1000px; 
+  margin: auto; 
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.header-app {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  color: #EDEDED; 
+}
+
+.title {
+  font-size: 20px;
+  margin: 0;
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+.menu {
+  position: relative;
+  top: 0;
+  right: 0;
+}
+
+.menu .MuiFab-primary {
+  background-color: transparent !important; 
+  box-shadow: none !important; 
+}
+
+.menu .MuiSpeedDial-fab {
+  width: 36px;
+  height: 36px;
+}
+
+.menu .MuiFab-primary:before {
+  content: '⋮'; 
+  font-size: 24px;
+  color: #EDEDED; 
+}
+
+.search-contact {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 20px;
+  background-color: #2A2F32;
+  color: #EDEDED;
+  font-size: 16px;
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+.search-contact:focus {
+  outline: none;
+}
+
+
+@media (max-width: 1200px) {
+  .contactos-container {
+    max-width: 900px;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 992px) {
+  .contactos-container {
+    max-width: 750px;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contactos-container {
+    max-width: 600px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .contactos-container {
+    max-width: 450px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  .contactos-container {
+    max-width: 320px;
+    padding: 5px;
+  }
+}

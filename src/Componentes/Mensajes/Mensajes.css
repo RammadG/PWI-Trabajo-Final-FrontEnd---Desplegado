@@ -32,7 +32,8 @@
 
 .mensaje-contenido {
   flex: 1;
-  font-size: 16px;
+  font-size: 14px;
+  font-style: unset;
 }
 
 .mensaje-fecha-estado {

@@ -1,26 +1,105 @@
 .contactos-list {
   display: flex;
   flex-direction: column;
-  margin-top: 20px;
-  max-width: 420px;
-  margin: auto;
-  .contacto-item {
-    border: 1px solid white;
-    border-radius: 3px;
-    padding: 8px;
-    margin-bottom: 8px;
-    cursor: pointer;
-    &:hover{
-    background-color: #233138;
+  margin-top: 10px;
+  width: 100%;
+  max-width: 1000px; /* Valor máximo para pantallas grandes */
+  margin: auto; /* Centra la lista */
+  padding: 20px;
+  box-sizing: border-box; /* Incluye padding y border en el ancho total */
+}
+
+.contacto-item {
+  display: flex;
+  align-items: center; /* Alinea la imagen y el texto verticalmente */
+  padding: 10px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  background-color: #1E1E1E;
+  border-bottom: 1px solid #2C2C2C;
+  transition: background-color 0.3s ease;
+}
+
+.contacto-item:hover {
+  background-color: #2A2F32;
+}
+
+.contacto-item:active {
+  background-color: #075E54;
+}
+
+.contacto-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.contacto-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.contacto-info p {
+  margin: 5px 0 0 0;
+  font-size: 14px;
+  color: #B1B3B5;
+}
+
+.contacto-info p strong {
+  color: #75C7C1;
+}
+
+.titulo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.titulo h3 {
+  font-size: 16px;
+  margin: 0;
+  color: #EDEDED;
+}
+
+.titulo small {
+  font-size: 12px;
+  color: #999;
+}
+
+/* Media queries para asegurar que sea responsivo */
+@media (max-width: 1200px) {
+  .contactos-list {
+    max-width: 900px;
+    padding: 15px;
   }
-    &:active{
-      background-color: #017c62;
-    }
-    .titulo {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: baseline;
-    }
+}
+
+@media (max-width: 992px) {
+  .contactos-list {
+    max-width: 750px;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contactos-list {
+    max-width: 600px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .contactos-list {
+    max-width: 450px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  .contactos-list {
+    max-width: 320px;
+    padding: 5px;
   }
 }
