@@ -1,7 +1,12 @@
 import React, { useState } from 'react'
 import './NuevoContactoForm.css'
+import { useGlobalContext } from '../../Context/GlobalContext'
+import { useNavigate } from 'react-router-dom'
 
 const NuevoContactoForm = () => {
+
+  const {handleCreateContact} = useGlobalContext()
+  const navigate = useNavigate()
 
   const formEsquema = {
     nombre: '',
@@ -9,11 +14,11 @@ const NuevoContactoForm = () => {
     info:{
       numero: '',
       descripcion: 'HEY There!, I am using WhatsApp...',
-      fechadescripcion:'',
+      fechadescripcion:'hoy',
       },
     mensajes: [
       {
-        author: '',
+        author: 'yo',
         content: '',
         fecha: 'ahora',
         estado: 'entregado'
@@ -29,9 +34,13 @@ const NuevoContactoForm = () => {
     setFormValues ({...formValues, [valueToChange]: newValue})
   }
 
+  const handleGetBacktoHome = () => {
+    navigate('/')
+  }
+
   return (
     <div className="nuevo-contacto-container">
-      <form className="nuevo-contacto-form">
+      <form onSubmit={handleCreateContact} className="nuevo-contacto-form">
         <label htmlFor="nombre" className="form-label">Nombre: </label>
         <input 
           type={formEsquema.nombre}
@@ -48,7 +57,7 @@ const NuevoContactoForm = () => {
       </form>
       <div className="button-container">
         <button className="form-button agregar-button">Agregar</button>
-        <button className="form-button cancelar-button">Cancelar</button>
+        <button onClick={handleGetBacktoHome} className="form-button cancelar-button">Cancelar</button>
       </div>
     </div>
   )
