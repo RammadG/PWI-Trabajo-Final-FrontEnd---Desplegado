@@ -3,15 +3,15 @@
   flex-direction: column;
   margin-top: 10px;
   width: 100%;
-  max-width: 1000px; /* Valor máximo para pantallas grandes */
-  margin: auto; /* Centra la lista */
+  max-width: 1000px; 
+  margin: auto; 
   padding: 20px;
-  box-sizing: border-box; /* Incluye padding y border en el ancho total */
+  box-sizing: border-box; 
 }
 
 .contacto-item {
   display: flex;
-  align-items: center; /* Alinea la imagen y el texto verticalmente */
+  align-items: center; 
   padding: 10px;
   margin-bottom: 8px;
   cursor: pointer;
@@ -68,7 +68,6 @@
   color: #999;
 }
 
-/* Media queries para asegurar que sea responsivo */
 @media (max-width: 1200px) {
   .contactos-list {
     max-width: 900px;

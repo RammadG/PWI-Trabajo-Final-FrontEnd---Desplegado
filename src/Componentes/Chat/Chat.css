@@ -10,7 +10,6 @@
   width: 100%;
 }
 
-/* Header del chat */
 .chat-header {
   width: 100%;
   display: flex;
@@ -22,7 +21,6 @@
   border-radius: 10px 10px 0 0; 
 }
 
-/* Información del contacto */
 .contact-info {
   display: flex;
   align-items: center;
@@ -35,7 +33,6 @@
   margin-right: 10px;
 }
 
-/* Área de mensajes */
 .chat-display {
   width: 100%;
   background-color: #1e1e1e; 
@@ -47,13 +44,11 @@
   flex-direction: column;
 }
 
-/* Contenedor de mensajes */
 .input-mensaje {
   width: 100%;
   padding: 6px 8px;
 }
 
-/* Media queries para hacer el contenedor responsivo */
 @media (max-width: 768px) {
   .chat-container {
     max-width: 100%;

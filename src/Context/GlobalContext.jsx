@@ -1,6 +1,6 @@
 import {createContext, useContext, useEffect, useState} from 'react'
 import { useNavigate } from 'react-router-dom'
-import { crearContacto, obtenerContactos } from '../Componentes/helpers/listadecontactos'
+import { crearContacto, obtenerContactos, reiniciarContactos } from '../Componentes/helpers/listadecontactos'
 import { v4 as uuid } from 'uuid';
 
 
@@ -59,13 +59,21 @@ export const GlobalContextProvider = ({children}) => {
   navigate('/')
 }
 
+const handleReiniciarContactos = () => {
+  const contactosReiniciados = reiniciarContactos()
+  setProductos(contactosReiniciados)
+  window.location.reload()
+}
+
+
   return (
     <GlobalContext.Provider value={
       {
         contactos: contactos,
         handleChangeSearchTerm,
         searchTerm,
-        handleCreateContact
+        handleCreateContact,
+        handleReiniciarContactos
       }
     }>
       {children}

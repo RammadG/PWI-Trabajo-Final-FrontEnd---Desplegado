@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 
 const NuevoContactoForm = () => {
 
-  const {handleCreateContact} = useGlobalContext()
+  const { handleCreateContact } = useGlobalContext()
   const navigate = useNavigate()
 
   const formEsquema = {
@@ -15,7 +15,7 @@ const NuevoContactoForm = () => {
       numero: '',
       descripcion: 'HEY There!, I am using WhatsApp...',
       fechadescripcion:'hoy',
-      },
+    },
     mensajes: [
       {
         author: 'yo',
@@ -31,7 +31,15 @@ const NuevoContactoForm = () => {
   const handleChangeFormValue = (e) => {
     const valueToChange = e.target.id
     const newValue = e.target.value
-    setFormValues ({...formValues, [valueToChange]: newValue})
+
+    if (valueToChange === 'numero') {
+      setFormValues({
+        ...formValues,
+        info: { ...formValues.info, numero: newValue },
+      })
+    } else {
+      setFormValues({ ...formValues, [valueToChange]: newValue })
+    }
   }
 
   const handleGetBacktoHome = () => {
@@ -43,21 +51,28 @@ const NuevoContactoForm = () => {
       <form onSubmit={handleCreateContact} className="nuevo-contacto-form">
         <label htmlFor="nombre" className="form-label">Nombre: </label>
         <input 
-          type={formEsquema.nombre}
+          type="text"
           name='nombre'
           id='nombre'
           value={formValues.nombre}
-          onChange={handleChangeFormValue}/>
+          onChange={handleChangeFormValue}
+        />
         <label htmlFor="numero" className="form-label">Número: </label>
-        <input type={formEsquema.info.numero}
-        name='numero'
-        id='numero'
-        value={formValues.info.numero}
-        onChange={handleChangeFormValue}/>
+        <input 
+          type="text"
+          name='numero'
+          id='numero'
+          value={formValues.info.numero}
+          onChange={handleChangeFormValue}
+        />
+        <button type="submit" className="form-button agregar-button">
+          Agregar
+        </button>
       </form>
       <div className="button-container">
-        <button className="form-button agregar-button">Agregar</button>
-        <button onClick={handleGetBacktoHome} className="form-button cancelar-button">Cancelar</button>
+        <button onClick={handleGetBacktoHome} className="form-button cancelar-button">
+          Cancelar
+        </button>
       </div>
     </div>
   )

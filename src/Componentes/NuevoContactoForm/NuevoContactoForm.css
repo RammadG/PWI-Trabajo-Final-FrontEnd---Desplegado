@@ -5,7 +5,6 @@
   padding: 10px;
 }
 
-/* Estilo general para el formulario */
 .nuevo-contacto-form {
   display: flex;
   flex-direction: column;
@@ -18,14 +17,12 @@
   max-width: 600px;
 }
 
-/* Estilo para las etiquetas */
 .form-label {
   color: #b0b0b0;
   font-size: 14px;
   margin-bottom: 5px;
 }
 
-/* Estilo para los campos de entrada */
 .form-input {
   padding: 10px;
   font-size: 16px;
@@ -36,7 +33,6 @@
   margin-bottom: 15px;
 }
 
-/* Estilo para el contenedor de botones */
 .button-container {
   display: flex;
   justify-content: space-between;
@@ -45,7 +41,6 @@
   margin-top: 10px;
 }
 
-/* Estilo para los botones */
 .form-button {
   padding: 10px 20px;
   font-size: 16px;
@@ -54,9 +49,10 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
   color: #fff;
+  width: 100%; 
+  box-sizing: border-box; 
 }
 
-/* Botón Agregar */
 .agregar-button {
   background-color: #25d366;
 }
@@ -65,7 +61,6 @@
   background-color: #20c257;
 }
 
-/* Botón Cancelar */
 .cancelar-button {
   background-color: #555;
 }
@@ -74,7 +69,6 @@
   background-color: #444;
 }
 
-/* Media queries para hacer el formulario responsivo */
 @media (max-width: 768px) {
   .nuevo-contacto-form {
     max-width: 100%;

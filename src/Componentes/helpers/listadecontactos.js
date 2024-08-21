@@ -1,9 +1,5 @@
 import { DATA_MOOK } from "../../Data/DATA_MOOK";
 
-/* const obtenerContactosporid = (id) => {
-  return DATA_MOOK.find(contacto => contacto.id === id)
-  } */
-
   const guardarContacto = (contactos) => {
     const contactos_JSON = JSON.stringify(contactos);
     localStorage.setItem('contactos', contactos_JSON);

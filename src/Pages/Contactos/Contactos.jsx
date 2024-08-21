@@ -9,7 +9,7 @@ import { useGlobalContext } from '../../Context/GlobalContext';
 
 const Contactos = () => {
 
-  const {contactos, handleChangeSearchTerm, searchTerm} = useGlobalContext()
+  const {contactos, handleChangeSearchTerm, searchTerm, handleReiniciarContactos} = useGlobalContext()
 
   const navigate = useNavigate()
   const handleGetToContactForm = () => {
@@ -32,6 +32,7 @@ const Contactos = () => {
       </div>
       <input onChange={handleChangeSearchTerm} value={searchTerm} type="text" className='search-contact'/>     
       <ListaDeContactos data={contactos} />
+      <button onClick={handleReiniciarContactos} className='restart-button'>Reiniciar Contactos</button>
     </div>
   );
 };
