@@ -1,17 +1,17 @@
-import { DATA_MOOK } from "../../Data/DATA_MOOK";
+import { DATA_MOOK } from "../../Data/DATA_MOOK"
 
   const guardarContacto = (contactos) => {
-    const contactos_JSON = JSON.stringify(contactos);
-    localStorage.setItem('contactos', contactos_JSON);
+    const contactos_JSON = JSON.stringify(contactos)
+    localStorage.setItem('contactos', contactos_JSON)
   };
   
   export const obtenerContactos = () => {
-    const contactosGuardados = localStorage.getItem('contactos');
+    const contactosGuardados = localStorage.getItem('contactos')
     if (contactosGuardados) {
-      return JSON.parse(contactosGuardados);
+      return JSON.parse(contactosGuardados)
     } else {
-      guardarContacto(DATA_MOOK);
-      return DATA_MOOK;
+      guardarContacto(DATA_MOOK)
+      return DATA_MOOK
     }
   };
 

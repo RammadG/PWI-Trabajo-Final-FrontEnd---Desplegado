@@ -17,15 +17,17 @@ export const GlobalContextProvider = ({children}) => {
   }
   
   useEffect(()=>{
-    const listaDeContactos = obtenerContactos()
-    if(searchTerm != ''){
-      const nuevaListaDeContactos = listaDeContactos.filter((contacto) => contacto.nombre.toLowerCase().includes(searchTerm.toLowerCase()))
-      setContactos(nuevaListaDeContactos)
-    }
-    else{
-      setContactos(listaDeContactos)
-    }
-  }, [searchTerm])
+  const listaDeContactos = JSON.parse(localStorage.getItem('contactos')) || obtenerContactos();
+
+  if (searchTerm !== '') {
+    const nuevaListaDeContactos = listaDeContactos.filter((contacto) =>
+      contacto.nombre.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setContactos(nuevaListaDeContactos)
+  } else {
+    setContactos(listaDeContactos)
+  }
+}, [searchTerm])
 
   const handleCreateContact = (e) => {
     e.preventDefault()
@@ -59,12 +61,10 @@ export const GlobalContextProvider = ({children}) => {
   navigate('/')
 }
 
-const handleReiniciarContactos = () => {
-  const contactosReiniciados = reiniciarContactos()
-  setProductos(contactosReiniciados)
-  window.location.reload()
-}
-
+/* const handleReiniciarContactos = () => {
+  localStorage.clear()
+  navigate('/')
+} */
 
   return (
     <GlobalContext.Provider value={
@@ -73,7 +73,7 @@ const handleReiniciarContactos = () => {
         handleChangeSearchTerm,
         searchTerm,
         handleCreateContact,
-        handleReiniciarContactos
+        setContactos,   
       }
     }>
       {children}

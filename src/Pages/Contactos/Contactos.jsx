@@ -1,10 +1,10 @@
 import React from 'react'
-import ListaDeContactos from '../../Componentes/ListaDeContactos/ListaDeContactos';
-import { useNavigate } from 'react-router-dom';
-import { SpeedDial, SpeedDialAction } from '@mui/material';
-import { Add, Person2 } from '@mui/icons-material';
+import ListaDeContactos from '../../Componentes/ListaDeContactos/ListaDeContactos'
+import { useNavigate } from 'react-router-dom'
+import { SpeedDial, SpeedDialAction } from '@mui/material'
+import { Add, Person2 } from '@mui/icons-material'
 import './Contactos.css'
-import { useGlobalContext } from '../../Context/GlobalContext';
+import { useGlobalContext } from '../../Context/GlobalContext'
 
 
 const Contactos = () => {
@@ -32,10 +32,10 @@ const Contactos = () => {
       </div>
       <input onChange={handleChangeSearchTerm} value={searchTerm} type="text" className='search-contact'/>     
       <ListaDeContactos data={contactos} />
-      <button onClick={handleReiniciarContactos} className='restart-button'>Reiniciar Contactos</button>
+      {/* <button onClick={handleReiniciarContactos} className='restart-button'>Reiniciar Contactos</button> */}
     </div>
-  );
-};
+  )
+}
 
 
 export default Contactos

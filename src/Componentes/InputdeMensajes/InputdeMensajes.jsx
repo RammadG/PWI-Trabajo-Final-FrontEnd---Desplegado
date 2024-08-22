@@ -20,9 +20,9 @@ const InputdeMensajes = ({handleSubmit}) => {
 
   return (
     <form className='input-container'  onSubmit={(e) => {
-      e.preventDefault();
-      handleSubmit(e, { ...inputValue });
-      setInputValue({ ...inputValue, content: ''});
+      e.preventDefault()
+      handleSubmit(e, { ...inputValue })
+      setInputValue({ ...inputValue, content: ''})
     }}
   >
     <input
