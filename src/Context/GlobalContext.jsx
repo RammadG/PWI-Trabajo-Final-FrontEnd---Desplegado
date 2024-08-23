@@ -1,81 +1,66 @@
-import {createContext, useContext, useEffect, useState} from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { crearContacto, obtenerContactos, reiniciarContactos } from '../Componentes/helpers/listadecontactos'
-import { v4 as uuid } from 'uuid';
-
+import { obtenerContactos } from '../Componentes/helpers/listadecontactos'
+import { v4 as uuid } from 'uuid'
 
 const GlobalContext = createContext()
 
-export const GlobalContextProvider = ({children}) => {
-  
+export const GlobalContextProvider = ({ children }) => {
   const [contactos, setContactos] = useState(obtenerContactos())
   const [searchTerm, setSearchTerm] = useState('')
   const navigate = useNavigate()
 
   const handleChangeSearchTerm = (e) => {
     setSearchTerm(e.target.value)
-  }
-  
-  useEffect(()=>{
-  const listaDeContactos = JSON.parse(localStorage.getItem('contactos')) || obtenerContactos();
+  };
 
-  if (searchTerm !== '') {
-    const nuevaListaDeContactos = listaDeContactos.filter((contacto) =>
-      contacto.nombre.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setContactos(nuevaListaDeContactos)
-  } else {
-    setContactos(listaDeContactos)
-  }
-}, [searchTerm])
+  useEffect(() => {
+    const listaDeContactos = JSON.parse(localStorage.getItem('contactos')) || obtenerContactos()
 
-  const handleCreateContact = (e) => {
-    e.preventDefault()
-    const formulario = e.target
-    const formularioValores = new FormData(formulario)
+    if (searchTerm !== '') {
+      const nuevaListaDeContactos = listaDeContactos.filter((contacto) =>
+        contacto.nombre.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+      setContactos(nuevaListaDeContactos)
+    } else {
+      setContactos(listaDeContactos)
+    }
+  }, [searchTerm])
 
+  const handleCreateContact = (formValues) => {
     const nuevoContacto = {
-      nombre: '',
-      id: Number(),
-      info:{
-        numero: '',
-        descripcion: 'HEY There!, I am using WhatsApp...',
-        fechadescripcion:'hoy',
-        },
-      mensajes: [
-        {
-          author: 'yo',
-          content: '',
-          fecha: 'ahora',
-          estado: 'entregado'
-        }
-      ]
+      ...formValues,
+      id: uuid(),
     }
 
-    for(let propiedad in nuevoContacto){
-    nuevoContacto[propiedad] = formularioValores.get(propiedad)
+    const nuevosContactos = [...contactos, nuevoContacto]
+    setContactos(nuevosContactos)
+    localStorage.setItem('contactos', JSON.stringify(nuevosContactos))
   }
-  nuevoContacto.id = uuid()
-  crearContacto(nuevoContacto)
-  setContactos([...contactos, nuevoContacto])
-  navigate('/')
-}
 
-/* const handleReiniciarContactos = () => {
-  localStorage.clear()
-  navigate('/')
-} */
+  useEffect(() => {
+    const contactosActualizados = JSON.parse(localStorage.getItem('contactos')) || []
+    setContactos(contactosActualizados);
+  }, [])
+
+  const agregarContacto = (nuevoContacto) => {
+    const contactosGuardados = JSON.parse(localStorage.getItem('contactos')) || []
+    contactosGuardados.push(nuevoContacto)
+    localStorage.setItem('contactos', JSON.stringify(contactosGuardados))
+    setContactos(contactosGuardados)
+  }
 
   return (
-    <GlobalContext.Provider value={
-      {
-        contactos: contactos,
+    <GlobalContext.Provider
+      value={{
+        contactos,
         handleChangeSearchTerm,
         searchTerm,
         handleCreateContact,
-        setContactos,   
-      }
-    }>
+        setContactos,
+        agregarContacto
+      }}
+    >
       {children}
     </GlobalContext.Provider>
   )

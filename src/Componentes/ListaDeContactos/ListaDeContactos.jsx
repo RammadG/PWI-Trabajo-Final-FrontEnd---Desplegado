@@ -10,14 +10,17 @@ const ListaDeContactos = ({ data }) => {
   }
 
   return (
-    <div className="contactos-list">
+    <div className='contactos-list'>
       {data.map((contacto) => {
-        const ultimoMensaje = contacto.mensajes[contacto.mensajes.length - 1]
+        const ultimoMensaje = contacto.mensajes && contacto.mensajes.length > 0
+          ? contacto.mensajes[contacto.mensajes.length - 1]
+          : { author: 'Sin mensajes', content: '', fecha: '' }
+
         return (
-          <div onClick={handleGetInContact(contacto.id)} key={contacto.id} className="contacto-item">
-            <img src={contacto.imagen} alt={`${contacto.nombre} profile`} className="contacto-img" />
-            <div className="contacto-info">
-              <div className="titulo">
+          <div onClick={handleGetInContact(contacto.id)} key={contacto.id} className='contacto-item'>
+            <img src={contacto.imagen} alt={`${contacto.nombre} profile`} className='contacto-img' />
+            <div className='contacto-info'>
+              <div className='titulo'>
                 <h3>{contacto.nombre}</h3>
                 <small>{ultimoMensaje.fecha}</small>
               </div>

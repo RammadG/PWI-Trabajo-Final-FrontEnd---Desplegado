@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 import './App.css'
-import { Route, Routes } from 'react-router-dom';
-import { AgregarContacto, Contactos, InfoDeContacto, Chats } from './Pages';
+import { Route, Routes } from 'react-router-dom'
+import { AgregarContacto, Contactos, InfoDeContacto, Chats } from './Pages'
 
 function App() {
   return (
