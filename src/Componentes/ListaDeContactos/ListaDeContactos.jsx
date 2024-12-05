@@ -18,16 +18,16 @@ const ListaDeContactos = ({ data }) => {
 
         return (
           <div onClick={handleGetInContact(contacto.id)} key={contacto.id} className='contacto-item'>
-            <img src={contacto.imagen} alt={`${contacto.nombre} profile`} className='contacto-img' />
+            <img src={'/perfil_default.webp'} alt={`${contacto.nombre} profile`} className='contacto-img' />
             <div className='contacto-info'>
               <div className='titulo'>
-                <h3>{contacto.nombre}</h3>
-                <small>{ultimoMensaje.fecha}</small>
+                <h3>{contacto.name}</h3>
+{/*                 <small>{ultimoMensaje.fecha}</small> */}
               </div>
-              <p>
+{/*               <p>
                 <strong>{ultimoMensaje.author}:</strong>
                 {ultimoMensaje.content}
-              </p>
+              </p> */}
             </div>
           </div>
         )

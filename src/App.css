@@ -8,4 +8,33 @@ body{
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
+  text-decoration: none;
+}
+
+.contenedorForm{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.contenedorForm .form{
+  background-color: #128C7E;
+  display: flex;
+  flex-direction: column;
+  gap:10px;
+  width: 400px;
+  padding: 30px;
+}
+
+.contenedorForm .label_input{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.label_input input{
+  padding: 5px;
 }
