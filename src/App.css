@@ -38,3 +38,19 @@ body{
 .label_input input{
   padding: 5px;
 }
+
+@media (max-width: 768px) {
+
+  .contenedorForm .form{
+    width: 60%;
+  }
+
+}
+
+@media (max-width: 500px) {
+
+  .contenedorForm .form{
+    width: 80%;
+  }
+
+}

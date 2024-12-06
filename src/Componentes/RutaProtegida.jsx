@@ -6,7 +6,6 @@ const RutaProtegida = () => {
     
     const { isAuthenticatedUser } = useAuthContext()
 
-    console.log(isAuthenticatedUser)
     return (
         <>
         {

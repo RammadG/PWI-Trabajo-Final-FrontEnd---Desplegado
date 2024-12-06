@@ -4,51 +4,30 @@ import './Chat.css'
 import { useNavigate, useParams } from 'react-router-dom'
 import InputdeMensajes from '../InputdeMensajes/InputdeMensajes'
 import { useGlobalContext } from '../../Context/GlobalContext'
+import useForm from '../../Hooks/useForm.jsx'
 
 const Chat = () => {
-  const { contactos, setContactos } = useGlobalContext()
-  const navigation = useNavigate()
+  const navigate = useNavigate()
   const parametros = useParams()
 
-  const [isLoading, setIsLoading] = useState(true)
 
-  const chat = contactos.find((contacto) => contacto.id === Number(parametros.id)) || { mensajes: [], nombre: 'Sin Nombre', imagen: '', conexion: '' }
+  const [isLoading, setIsLoading] = useState(true)
+  const [nombreContacto, setNombreContacto] = useState('')
+  const { form_state, handleChange } = useForm({
+    content: ''
+  })
 
   const [listaDeMensajes, setListaDeMensajes] = useState([])
 
   const handleGetInInfoContact = (id) => () => {
-    navigation(`/info-contacto/${id}`)
+    navigate(`/info-contacto/${id}`)
   }
 
   const handleGetbacktoContacts = () => {
-    navigation('/')
-  }
-
-  const handleSubmit = (e, inputValue) => {
-    e.preventDefault()
-
-    const nuevoMensaje = {
-      author: 'yo',
-      content: ' ' + inputValue.content,
-      fecha: 'ahora',
-      estado: 'entregado',
-    }
-
-    const nuevaListaDeMensajes = [...listaDeMensajes, nuevoMensaje]
-    setListaDeMensajes(nuevaListaDeMensajes)
-
-    const contactosActualizados = contactos.map((contacto) =>
-      contacto.id === chat.id ? { ...contacto, mensajes: nuevaListaDeMensajes } : contacto
-    )
-
-    setContactos(contactosActualizados)
-    localStorage.setItem('contactos', JSON.stringify(contactosActualizados))
+    navigate('/')
   }
 
   useEffect(() => {
-/*     const chatActualizado = contactos.find((contacto) => contacto.id === Number(parametros.id))
-    setListaDeMensajes(chatActualizado?.mensajes ?? []) */
-
 
     isLoading ? getContactMessages().then((listaMensajes) => {
       setListaDeMensajes(listaMensajes)
@@ -56,8 +35,7 @@ const Chat = () => {
     }) : ''
 
 
-  }, [])
-
+  }, [listaDeMensajes])
 
 
 
@@ -67,48 +45,84 @@ const Chat = () => {
 
   const getContactMessages = async () => {
 
-    const httpResponse = await fetch('http://localhost:8000/api/message/' + parametros.id,{
+    const httpResponse = await fetch('http://localhost:8000/api/message/' + parametros.id, {
       method: 'GET',
       headers: {
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImxhdXRhcm9taWNlbGlAZ21haWwuY29tIiwiaWQiOjEsImlhdCI6MTczMzM1NTM1NiwiZXhwIjoxNzMzNDQxNzU2fQ.5q8LggLHsSngMHMAa4pCiN275OxCHu85F1widsg4Agw'
+        'Authorization': 'Bearer ' + sessionStorage.getItem('accessToken')
       }
     })
 
     const response = await httpResponse.json()
+    console.log(response)
 
-    console.log(response.data.mensajes)
+    setNombreContacto(response.data.nombreContacto)
 
     return response.data.mensajes
 
   }
 
+  const handleSubmitMessage = async (e) => {
+    e.preventDefault()
 
-  /* AGREGADO MIO */
+    if (!form_state.content) {
+      return
+    }
+
+    const httpResponse = await fetch('http://localhost:8000/api/message/' + parametros.id, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + sessionStorage.getItem('accessToken')
+      },
+      body: JSON.stringify(form_state)
+    })
+
+    const response = await httpResponse.json()
+
+
+    if (response.ok) {
 
 
 
+      let hora = new Date().getHours().toString().padStart(2, '0');
+      let minutos = new Date().getMinutes().toString().padStart(2, '0');
 
+      const nuevoMensaje = {
+        id: listaDeMensajes[listaDeMensajes.length - 1] ? listaDeMensajes[listaDeMensajes.length - 1].id + 1 : 1,
+        author_id: sessionStorage.getItem('author_id'),
+        content: form_state.content,
+        receiver_id: parametros.id,
+        created_at: `${hora}:${minutos}`
+      }
 
+      const listaDeMensajesActualizada = [...listaDeMensajes, nuevoMensaje]
 
+      setListaDeMensajes(listaDeMensajesActualizada)
 
+      form_state.content = ''
+      return
+    }
 
+    return
+  }
 
   return (
     <div className='chat-container'>
       <header className='chat-header'>
         <div className='contact-info'>
-          <img onClick={handleGetbacktoContacts} src={chat.imagen} alt={`${chat.nombre} perfil`} className='profile-pic'/>
+          <span className='home-button' onClick={() => navigate('/')}>←</span>
+          <img onClick={handleGetbacktoContacts} src={'/perfil_default.webp'} alt={`${nombreContacto} perfil`} className='profile-pic' />
           <div className='contact-details'>
-            <p className='contact-name' onClick={handleGetInInfoContact(parametros.id)}>{chat.nombre}</p>
-            <p>{chat.conexion}</p>
+            <p className='contact-name' onClick={handleGetInInfoContact(parametros.id)}>{nombreContacto}</p>
+            <p style={{ color: 'grey', fontSize: '12px' }}>En línea</p>
           </div>
         </div>
       </header>
       <div className='chat-display'>
-        <Mensajes mensajes={listaDeMensajes}/>
+        <Mensajes mensajes={listaDeMensajes} />
       </div>
       <footer className='input-mensaje'>
-        <InputdeMensajes handleSubmit={handleSubmit}/>
+        <InputdeMensajes handleSubmitMessage={handleSubmitMessage} form_state={form_state} handleChange={handleChange} />
       </footer>
     </div>
   )

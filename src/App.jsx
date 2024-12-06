@@ -15,7 +15,8 @@ function App() {
         <Route path='/' element={<Contactos />} />
         <Route path='/chats/:id' element={<Chats />} />
         <Route path='/agregar-contacto' element={<AgregarContacto />} />
-        <Route path='/info-contacto/:id' element={<InfoDeContacto />} />
+        <Route path='/info-contacto/:id' element={<InfoDeContacto admin={false}/>} />
+        <Route path='/mi-perfil' element={<InfoDeContacto admin={true}/>} />
       </Route>
     </Routes>
   );

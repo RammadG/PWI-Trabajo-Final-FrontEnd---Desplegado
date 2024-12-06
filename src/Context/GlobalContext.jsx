@@ -7,25 +7,11 @@ const GlobalContext = createContext()
 
 export const GlobalContextProvider = ({ children }) => {
   const [contactos, setContactos] = useState(obtenerContactos())
-  const [searchTerm, setSearchTerm] = useState('')
+
   const navigate = useNavigate()
 
-  const handleChangeSearchTerm = (e) => {
-    setSearchTerm(e.target.value)
-  };
 
-  useEffect(() => {
-    const listaDeContactos = JSON.parse(localStorage.getItem('contactos')) || obtenerContactos()
 
-    if (searchTerm !== '') {
-      const nuevaListaDeContactos = listaDeContactos.filter((contacto) =>
-        contacto.nombre.toLowerCase().includes(searchTerm.toLowerCase())
-      )
-      setContactos(nuevaListaDeContactos)
-    } else {
-      setContactos(listaDeContactos)
-    }
-  }, [searchTerm])
 
   const handleCreateContact = (formValues) => {
     const nuevoContacto = {
@@ -54,8 +40,6 @@ export const GlobalContextProvider = ({ children }) => {
     <GlobalContext.Provider
       value={{
         contactos,
-        handleChangeSearchTerm,
-        searchTerm,
         handleCreateContact,
         setContactos,
         agregarContacto

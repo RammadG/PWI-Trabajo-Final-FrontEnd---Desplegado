@@ -2,83 +2,66 @@ import React, { useState } from 'react'
 import './NuevoContactoForm.css'
 import { useGlobalContext } from '../../Context/GlobalContext'
 import { useNavigate } from 'react-router-dom'
+import useForm from '../../Hooks/useForm';
 
 const NuevoContactoForm = () => {
-  const { agregarContacto } = useGlobalContext()
-  const navigate = useNavigate()
+    const { agregarContacto } = useGlobalContext()
+    const navigate = useNavigate()
 
-  const formEsquema = {
-    nombre: '',
-    id: '', 
-    conexion: 'últ. vez hoy',
-    imagen: 'https://www.gstatic.com/images/icons/material/system/2x/person_outline_black_48dp.png',
-    info: {
-      numero: '',
-      descripcion: 'HEY There!, I am using WhatsApp...',
-      fechadescripcion: 'hoy',
-    },
-    mensajes: []
-  };
+    const {form_state, handleChange} = useForm({
+        username: ''
+    })
 
-  const [formValues, setFormValues] = useState(formEsquema);
+    const formEsquema = {
 
-  const handleChangeFormValue = (e) => {
-    const valueToChange = e.target.id;
-    const newValue = e.target.value;
+    };
 
-    if (valueToChange === 'numero') {
-      setFormValues({
-        ...formValues,
-        info: { ...formValues.info, numero: newValue },
-      });
-    } else {
-      setFormValues({ ...formValues, [valueToChange]: newValue });
-    }
-  };
+    const handleAddContact = async (e) => {
+        e.preventDefault()
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const nuevoContacto = { ...formValues, id: Date.now() }
-    await agregarContacto(nuevoContacto)
-    navigate('/')
-  };
+        const httpResponse = await fetch('http://localhost:8000/api/contact/add',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + sessionStorage.getItem('accessToken') 
+            },
+            body: JSON.stringify(form_state)
+        })
 
-  const handleGetBacktoHome = () => {
-    navigate('/')
-  };
+        const response = await httpResponse.json()
 
-  return (
-    <div className="nuevo-contacto-container">
-      <form onSubmit={handleSubmit} className="nuevo-contacto-form">
-        <label htmlFor="nombre" className="form-label">Nombre: </label>
-        <input 
-          type="text"
-          name='nombre'
-          id='nombre'
-          value={formValues.nombre}
-          onChange={handleChangeFormValue}
-          required
-        />
-        <label htmlFor="numero" className="form-label">Número: </label>
-        <input 
-          type="text"
-          name='numero'
-          id='numero'
-          value={formValues.info.numero}
-          onChange={handleChangeFormValue}
-          required
-        />
-        <button type="submit" className="form-button agregar-button">
-          Agregar
-        </button>
-      </form>
-      <div className="button-container">
-        <button onClick={handleGetBacktoHome} className="form-button cancelar-button">
-          Cancelar
-        </button>
-      </div>
-    </div>
-  );
+        console.log(response)
+
+        if(response.ok){
+            alert(response.message)
+        }else{
+            alert(response.error)
+        }
+
+
+    };
+
+    const handleGetBacktoHome = () => {
+        navigate('/')
+    };
+
+    return (
+        <div className="nuevo-contacto-container">
+            <form onSubmit={handleAddContact} className="nuevo-contacto-form">
+                <label htmlFor="username" className="form-label">Numero de teléfono o email: </label>
+                <input name='username' id='username' value={form_state.username} onChange={handleChange} required />
+
+                <button type="submit" className="form-button agregar-button">
+                    Agregar
+                </button>
+            </form>
+            <div className="button-container">
+                <button onClick={handleGetBacktoHome} className="form-button cancelar-button">
+                    Cancelar
+                </button>
+            </div>
+        </div>
+    );
 };
 
 export default NuevoContactoForm

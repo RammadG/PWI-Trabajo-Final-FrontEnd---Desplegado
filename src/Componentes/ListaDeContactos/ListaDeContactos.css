@@ -1,3 +1,8 @@
+.contenedor-contacto{
+  display: flex;
+  align-items: center;
+}
+
 .contactos-list {
   display: flex;
   flex-direction: column;
@@ -14,10 +19,12 @@
   align-items: center; 
   padding: 10px;
   margin-bottom: 8px;
+  width: 100%;
   cursor: pointer;
   background-color: #1E1E1E;
   border-bottom: 1px solid #2C2C2C;
   transition: background-color 0.3s ease;
+
 }
 
 .contacto-item:hover {
@@ -45,6 +52,14 @@
   margin: 5px 0 0 0;
   font-size: 14px;
   color: #B1B3B5;
+}
+
+.delete-contact{
+  display: flex;
+  height: 30px;
+
+  padding-inline: 10px;
+  cursor: pointer;
 }
 
 .contacto-info p strong {

@@ -4,8 +4,9 @@ export const AuthContext  = createContext()
 
 export const AuthContextProvider = ({children}) =>{
 
-    const access_token = sessionStorage.getItem('access_token')
+    const access_token = sessionStorage.getItem('accessToken')
     const [isAuthenticatedUser, setIsAuthenticatedUser] = useState(Boolean(access_token))
+    const [userData, setUserData] = useState(sessionStorage.getItem('userData'))
 
     useEffect(
         () => {
@@ -17,8 +18,14 @@ export const AuthContextProvider = ({children}) =>{
         []
     )
     const logout = () =>{
-        sessionStorage.removeItem('access_token')
-        setIsAuthenticatedUser(false)
+        if(confirm('¿Cerrar sesión?')){
+            sessionStorage.removeItem('accessToken')
+            sessionStorage.removeItem('userData')
+            sessionStorage.removeItem('author_id')
+            setIsAuthenticatedUser(false)
+            return
+        }
+        return
     }
 
     const login = (accessToken) => {
@@ -30,7 +37,9 @@ export const AuthContextProvider = ({children}) =>{
         <AuthContext.Provider value={{
             logout: logout,
             isAuthenticatedUser: isAuthenticatedUser,
-            login: login
+            login: login,
+            userData: userData,
+            setUserData: setUserData
         }} >
             {children}
         </AuthContext.Provider>
