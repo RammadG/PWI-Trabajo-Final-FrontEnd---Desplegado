@@ -39,8 +39,6 @@ const Login = () => {
         }
     }
 
-    
-
 
     return (
         <div className='contenedorForm'>
