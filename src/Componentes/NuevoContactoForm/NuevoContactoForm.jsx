@@ -19,7 +19,7 @@ const NuevoContactoForm = () => {
     const handleAddContact = async (e) => {
         e.preventDefault()
 
-        const httpResponse = await fetch('http://localhost:8000/api/contact/add',{
+        const httpResponse = await fetch('https://trabajo-final-backend-pwf-desplegado.vercel.app/api/contact/add',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

@@ -17,7 +17,7 @@ const Login = () => {
     const handleLogin = async (e) => {
         e.preventDefault()
 
-        const httpResponse = await fetch('http://localhost:8000/api/auth/login',{
+        const httpResponse = await fetch('https://trabajo-final-backend-pwf-desplegado.vercel.app/api/auth/login',{
             method: 'POST',
             headers:{
                 'Content-Type': 'application/json',

@@ -11,7 +11,7 @@ const ListaDeContactos = ({ data }) => {
 
   const handleDeleteContact = async (contactId) => {
 
-    const httpResponse = await fetch('http://localhost:8000/api/contact/' + contactId,{
+    const httpResponse = await fetch('https://trabajo-final-backend-pwf-desplegado.vercel.app/api/contact/' + contactId,{
       method: 'DELETE',
       headers: {
         'Authorization': 'Bearer ' + sessionStorage.getItem('accessToken')

@@ -17,7 +17,7 @@ const Registrar = () => {
 
         console.clear()
         e.preventDefault()
-        const httpResponse = await fetch('http://localhost:8000/api/auth/register', {
+        const httpResponse = await fetch('https://trabajo-final-backend-pwf-desplegado.vercel.app/api/auth/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

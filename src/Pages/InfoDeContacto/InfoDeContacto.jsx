@@ -23,7 +23,7 @@ const InfoDeContacto = ({ admin }) => {
 
   const getUserInfo = async () => {
 
-    const httpResponse = await fetch('http://localhost:8000/api/contact/' + parametros.id, {
+    const httpResponse = await fetch('https://trabajo-final-backend-pwf-desplegado.vercel.app/api/contact/' + parametros.id, {
       method: 'GET',
       headers: {
         'Authorization': 'Bearer ' + sessionStorage.getItem('accessToken')

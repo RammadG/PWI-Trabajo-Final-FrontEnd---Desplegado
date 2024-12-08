@@ -45,7 +45,7 @@ const Chat = () => {
 
   const getContactMessages = async () => {
 
-    const httpResponse = await fetch('http://localhost:8000/api/message/' + parametros.id, {
+    const httpResponse = await fetch('https://trabajo-final-backend-pwf-desplegado.vercel.app/api/message/' + parametros.id, {
       method: 'GET',
       headers: {
         'Authorization': 'Bearer ' + sessionStorage.getItem('accessToken')
@@ -68,7 +68,7 @@ const Chat = () => {
       return
     }
 
-    const httpResponse = await fetch('http://localhost:8000/api/message/' + parametros.id, {
+    const httpResponse = await fetch('https://trabajo-final-backend-pwf-desplegado.vercel.app/api/message/' + parametros.id, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

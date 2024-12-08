@@ -20,7 +20,7 @@ const Contactos = () => {
 
     const handleGetContacts = async () => {
 
-        const httpResponse = await fetch('http://localhost:8000/api/contact/', {
+        const httpResponse = await fetch('https://trabajo-final-backend-pwf-desplegado.vercel.app/api/contact/', {
             method: 'GET',
             headers: {
                 'Authorization': 'Bearer ' + sessionStorage.getItem('accessToken')
