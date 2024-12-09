@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import useForm from '../../Hooks/useForm'
+import URL_BACK from '../../Componentes/helpers/urlBack.js'
 
 const Registrar = () => {
 
@@ -17,7 +18,7 @@ const Registrar = () => {
 
         console.clear()
         e.preventDefault()
-        const httpResponse = await fetch('https://trabajo-final-backend-pwf-desplegado.vercel.app/api/auth/register', {
+        const httpResponse = await fetch( URL_BACK + '/api/auth/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { DATA_MOOK } from '../../Data/DATA_MOOK'
 import './InfoDeContacto.css'
-import { useGlobalContext } from '../../Context/GlobalContext'
+import URL_BACK from '../../Componentes/helpers/urlBack.js'
 
 const InfoDeContacto = ({ admin }) => {
-
-  const { contactos } = useGlobalContext()
   const navigate = useNavigate()
   const parametros = useParams()
 
@@ -17,13 +14,9 @@ const InfoDeContacto = ({ admin }) => {
     email: ''
   })
 
-  const getBackToChat = () => {
-    navigate(`/chats/${parametros.id}`)
-  }
-
   const getUserInfo = async () => {
 
-    const httpResponse = await fetch('https://trabajo-final-backend-pwf-desplegado.vercel.app/api/contact/' + parametros.id, {
+    const httpResponse = await fetch( URL_BACK + '/api/contact/' + parametros.id, {
       method: 'GET',
       headers: {
         'Authorization': 'Bearer ' + sessionStorage.getItem('accessToken')

@@ -1,10 +1,8 @@
 import React from 'react'
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
-import { AgregarContacto, Contactos, InfoDeContacto, Chats } from './Pages'
+import { AgregarContacto, Contactos, InfoDeContacto, Chats, Login, Registrar } from './Pages'
 import RutaProtegida from './Componentes/RutaProtegida';
-import Login from './Pages/Login/Login';
-import Registrar from './Pages/Register/Register';
 
 function App() {
   return (

@@ -1,5 +1,4 @@
 import React from 'react'
-import { DATA_MOOK } from '../../Data/DATA_MOOK';
 import { useParams } from 'react-router-dom';
 import './Mensajes.css'
 

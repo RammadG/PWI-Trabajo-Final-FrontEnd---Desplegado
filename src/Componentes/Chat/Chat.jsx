@@ -3,8 +3,8 @@ import Mensajes from '../Mensajes/Mensajes'
 import './Chat.css'
 import { useNavigate, useParams } from 'react-router-dom'
 import InputdeMensajes from '../InputdeMensajes/InputdeMensajes'
-import { useGlobalContext } from '../../Context/GlobalContext'
 import useForm from '../../Hooks/useForm.jsx'
+import URL_BACK from '../helpers/urlBack.js'
 
 const Chat = () => {
   const navigate = useNavigate()
@@ -37,15 +37,9 @@ const Chat = () => {
 
   }, [listaDeMensajes])
 
-
-
-
-
-  /* AGREGADO MIO */
-
   const getContactMessages = async () => {
 
-    const httpResponse = await fetch('https://trabajo-final-backend-pwf-desplegado.vercel.app/api/message/' + parametros.id, {
+    const httpResponse = await fetch( URL_BACK + '/api/message/' + parametros.id, {
       method: 'GET',
       headers: {
         'Authorization': 'Bearer ' + sessionStorage.getItem('accessToken')
@@ -68,7 +62,7 @@ const Chat = () => {
       return
     }
 
-    const httpResponse = await fetch('https://trabajo-final-backend-pwf-desplegado.vercel.app/api/message/' + parametros.id, {
+    const httpResponse = await fetch( URL_BACK + '/api/message/' + parametros.id, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -82,17 +76,12 @@ const Chat = () => {
 
     if (response.ok) {
 
-
-
-      let hora = new Date().getHours().toString().padStart(2, '0');
-      let minutos = new Date().getMinutes().toString().padStart(2, '0');
-
       const nuevoMensaje = {
         id: listaDeMensajes[listaDeMensajes.length - 1] ? listaDeMensajes[listaDeMensajes.length - 1].id + 1 : 1,
         author_id: sessionStorage.getItem('author_id'),
         content: form_state.content,
         receiver_id: parametros.id,
-        created_at: `${hora}:${minutos}`
+        created_at: `ahora`
       }
 
       const listaDeMensajesActualizada = [...listaDeMensajes, nuevoMensaje]

@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import useForm from '../../Hooks/useForm'
 import { useAuthContext } from '../../Context/AutentificacionContex'
+import URL_BACK from '../../Componentes/helpers/urlBack.js'
 
 const Login = () => {
 
@@ -17,7 +18,7 @@ const Login = () => {
     const handleLogin = async (e) => {
         e.preventDefault()
 
-        const httpResponse = await fetch('https://trabajo-final-backend-pwf-desplegado.vercel.app/api/auth/login',{
+        const httpResponse = await fetch( URL_BACK + '/api/auth/login',{
             method: 'POST',
             headers:{
                 'Content-Type': 'application/json',
@@ -27,15 +28,15 @@ const Login = () => {
     
         const response = await httpResponse.json()
 
-        setUserData(response.data.user)
-        sessionStorage.setItem('userData', JSON.stringify(response.data.user))
+
 
         if(response.ok){
-            login(response.data.accessToken)
+            setUserData(response.data.user)
+            sessionStorage.setItem('userData', JSON.stringify(response.data.user))
             sessionStorage.setItem('author_id', response.data.author_id)
             navigate('/')
         }else{
-            alert(response.message)
+            alert(response.error)
         }
     }
 

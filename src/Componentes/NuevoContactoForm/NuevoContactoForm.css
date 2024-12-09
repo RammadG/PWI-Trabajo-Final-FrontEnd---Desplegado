@@ -69,6 +69,23 @@
   background-color: #444;
 }
 
+.users{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  height: 250px;
+  background-color: transparent;
+  overflow-y: auto;
+
+
+  & li{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(128, 128, 128, 0.192);
+    padding: 5px;
+  }
+}
+
 @media (max-width: 768px) {
   .nuevo-contacto-form {
     max-width: 100%;

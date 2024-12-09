@@ -1,6 +1,7 @@
 import React from 'react'
 import './ListaDeContactos.css'
 import { useNavigate } from 'react-router-dom'
+import URL_BACK from '../helpers/urlBack.js'
 
 const ListaDeContactos = ({ data }) => {
   const navigate = useNavigate()
@@ -11,7 +12,7 @@ const ListaDeContactos = ({ data }) => {
 
   const handleDeleteContact = async (contactId) => {
 
-    const httpResponse = await fetch('https://trabajo-final-backend-pwf-desplegado.vercel.app/api/contact/' + contactId,{
+    const httpResponse = await fetch( URL_BACK + '/api/contact/' + contactId,{
       method: 'DELETE',
       headers: {
         'Authorization': 'Bearer ' + sessionStorage.getItem('accessToken')
