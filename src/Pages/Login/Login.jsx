@@ -34,6 +34,7 @@ const Login = () => {
             setUserData(response.data.user)
             sessionStorage.setItem('userData', JSON.stringify(response.data.user))
             sessionStorage.setItem('author_id', response.data.author_id)
+            login(response.data.accessToken)
             navigate('/')
         }else{
             alert(response.error)
