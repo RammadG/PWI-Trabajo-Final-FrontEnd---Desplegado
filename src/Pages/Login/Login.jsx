@@ -52,7 +52,7 @@ const Login = () => {
                 </div>
                 <div className='label_input'>
                     <label htmlFor='password'>Ingrese su contraseña:</label>
-                    <input name='password' id='password' placeholder='clave_secreta' onChange={handleChange}/>
+                    <input name='password' id='password' type='password' placeholder='clave_secreta' onChange={handleChange}/>
                 </div>
                 <button type='submit' style={{ height: '30px'}}>Iniciar sesion</button>
                 <span>¿No tienes cuenta?, <Link to='/register'>Registrate</Link></span>

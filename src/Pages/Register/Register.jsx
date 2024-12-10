@@ -16,7 +16,6 @@ const Registrar = () => {
 
     const handleRegister = async (e) => {
 
-        console.clear()
         e.preventDefault()
         const httpResponse = await fetch( URL_BACK + '/api/auth/register', {
             method: 'POST',
@@ -54,7 +53,7 @@ const Registrar = () => {
                 </div>
                 <div className='label_input'>
                     <label htmlFor='password'>Ingrese una contraseña:</label>
-                    <input name='password' id='password' placeholder='clave_secreta' onChange={handleChange} />
+                    <input name='password' id='password' type='password' placeholder='clave_secreta' onChange={handleChange} />
                 </div>
                 <button type='submit' style={{ height: '30px' }}>Registrarme</button>
                 <span>¿Ya tienes cuenta?, <Link to='/login'>Iniciar sesión</Link></span>

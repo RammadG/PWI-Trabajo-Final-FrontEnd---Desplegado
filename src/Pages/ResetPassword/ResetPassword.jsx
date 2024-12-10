@@ -52,11 +52,11 @@ const ResetPassword = () => {
                 <h1>Reestablecer contraseña</h1>
                 <div className='label_input'>
                     <label htmlFor='password'>Ingrese su nueva contraseña</label>
-                    <input name='password' id='password' placeholder='contraseñaSecreta' onChange={handleChange} />
+                    <input name='password' id='password' type='password' placeholder='contraseñaSecreta' onChange={handleChange} />
                 </div>
                 <div className='label_input'>
                     <label htmlFor='passwordRepetido'>Repita su nueva contraseña</label>
-                    <input name='passwordRepetido' id='passwordRepetido' placeholder='contraseñaSecreta' onChange={handleChange} />
+                    <input name='passwordRepetido' id='passwordRepetido' type='password' placeholder='contraseñaSecreta' onChange={handleChange} />
                 </div>
                 <button type='submit' style={{ height: '30px' }}>Reestablecer</button>
                 <span>¿Recordaste tu contraseña?, <Link to='/login'>Iniciar sesión</Link></span>
