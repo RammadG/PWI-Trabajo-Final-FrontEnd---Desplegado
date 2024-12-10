@@ -26,7 +26,7 @@ const ForgotPassword = () => {
         if (serverResponse.ok) {
             return alert('Email de reestablecimiento de contraseña enviado con éxito')
         } else {
-            return alert(response.error)
+            return alert(serverResponse.error)
         }
     }
 
