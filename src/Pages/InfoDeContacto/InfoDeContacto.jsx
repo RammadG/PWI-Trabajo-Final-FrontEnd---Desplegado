@@ -28,7 +28,7 @@ const InfoDeContacto = ({ admin }) => {
     if (!response.ok) {
       return alert(response.message)
     }
-    return
+    return response.data.user
 
   }
 
@@ -37,6 +37,7 @@ const InfoDeContacto = ({ admin }) => {
     admin ? setUserData(JSON.parse(sessionStorage.getItem('userData'))) :
       getUserInfo().then((user) => {
         setUserData(user)
+        console.log(user)
       })
 
   }, [])
