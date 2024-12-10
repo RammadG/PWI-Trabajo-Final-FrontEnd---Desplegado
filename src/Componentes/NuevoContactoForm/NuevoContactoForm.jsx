@@ -22,7 +22,7 @@ const NuevoContactoForm = () => {
     }, [])
 
     const getAllUsers = async () => {
-        const httpResponse = await fetch( URL_BACK + '/api/contact/get/users',
+        const httpResponse = await fetch(URL_BACK + '/api/contact/get/users',
             {
                 method: 'GET',
                 headers: {
@@ -40,7 +40,7 @@ const NuevoContactoForm = () => {
     const handleAddContact = async (e) => {
         e.preventDefault()
 
-        const httpResponse = await fetch( URL_BACK + '/api/contact/add', {
+        const httpResponse = await fetch(URL_BACK + '/api/contact/add', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -52,9 +52,9 @@ const NuevoContactoForm = () => {
         const response = await httpResponse.json()
 
         if (response.ok) {
-            alert(response.message)
+            return alert(response.message)
         } else {
-            alert(response.error)
+            return alert(response.error)
         }
 
 
@@ -88,7 +88,7 @@ const NuevoContactoForm = () => {
                             {
                                 usuarios.map((usuario, index) => {
                                     return (
-                                        <li>
+                                        <li key={index}>
                                             <span>Nombre: {usuario.name}</span>
                                             <span>Número: {usuario.number}</span>
                                             <span>email: {usuario.email}</span>

@@ -10,7 +10,7 @@ const Mensajes = ({ mensajes, author }) => {
 
         <>
             {
-                mensajes.length > 0 ? mensajes.map((mensaje, index) => {
+                mensajes.length !== 0 ? mensajes.map((mensaje, index) => {
                     return (
                         <div key={index} className={`mensajes ${mensaje.receiver_id != parametros.id ? 'mensaje-otros' : 'mensaje-yo'}`}>
                             <p className='mensaje-autor'>{mensaje.author === 'yo' ? 'Yo' : author}</p>
@@ -21,7 +21,7 @@ const Mensajes = ({ mensajes, author }) => {
                             </div>
                         </div>
                     )
-                }) : <h2>'No hay Mensajes'</h2>}
+                }) : <h2 style={{color: 'grey'}}><i>*No hay mensajes*</i></h2>}
 
         </>
 

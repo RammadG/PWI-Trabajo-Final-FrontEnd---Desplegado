@@ -28,7 +28,6 @@ const Contactos = () => {
         const response = await httpResponse.json()
 
         return response.data.contactos
-
     }
 
     useEffect(() => {

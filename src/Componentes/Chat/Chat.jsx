@@ -47,7 +47,6 @@ const Chat = () => {
     })
 
     const response = await httpResponse.json()
-    console.log(response)
 
     setNombreContacto(response.data.nombreContacto)
 
@@ -77,22 +76,22 @@ const Chat = () => {
     if (response.ok) {
 
       const nuevoMensaje = {
-        id: listaDeMensajes[listaDeMensajes.length - 1] ? listaDeMensajes[listaDeMensajes.length - 1].id + 1 : 1,
+        //id: listaDeMensajes[listaDeMensajes.length - 1] ? listaDeMensajes[listaDeMensajes.length - 1].id + 1 : 1,
         author_id: sessionStorage.getItem('author_id'),
         content: form_state.content,
         receiver_id: parametros.id,
         created_at: `ahora`
       }
 
-      const listaDeMensajesActualizada = [...listaDeMensajes, nuevoMensaje]
+      const listaDeMensajesActualizada = listaDeMensajes ? [...listaDeMensajes, nuevoMensaje] : [nuevoMensaje]
 
       setListaDeMensajes(listaDeMensajesActualizada)
 
       form_state.content = ''
       return
+    }else{
+      return alert(response.error)
     }
-
-    return
   }
 
   return (

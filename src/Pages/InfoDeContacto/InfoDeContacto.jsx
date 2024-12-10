@@ -16,7 +16,7 @@ const InfoDeContacto = ({ admin }) => {
 
   const getUserInfo = async () => {
 
-    const httpResponse = await fetch( URL_BACK + '/api/contact/' + parametros.id, {
+    const httpResponse = await fetch(URL_BACK + '/api/contact/' + parametros.id, {
       method: 'GET',
       headers: {
         'Authorization': 'Bearer ' + sessionStorage.getItem('accessToken')
@@ -25,8 +25,10 @@ const InfoDeContacto = ({ admin }) => {
 
     const response = await httpResponse.json()
 
-    return response.data.user
-
+    if (!response.ok) {
+      return alert(response.message)
+    }
+    return
 
   }
 
@@ -42,7 +44,7 @@ const InfoDeContacto = ({ admin }) => {
   return (
     <>
       <div className='profile-container'>
-        <span className='return-button' onClick={ admin ? () => navigate('/') : () => navigate('/chats/' + parametros.id)}>←</span>
+        <span className='return-button' onClick={admin ? () => navigate('/') : () => navigate('/chats/' + parametros.id)}>←</span>
         <img src='/perfil_default.webp' alt={`${userData.name} perfil`} />
         <h2 className='contact-name'>{userData.name}</h2>
         <h3>+54 {userData.number}</h3>
